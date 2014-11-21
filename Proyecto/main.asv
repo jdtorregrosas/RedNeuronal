@@ -6,7 +6,6 @@ net.divideFcn='';
 net.trainParam.goal=0;
 net.trainParam.epochs=10000;
 net=train(net,p',t');
-save('net.mat','net');
-save('p.mat','p');
+save('net');
 %p'
 %t'
