@@ -1,17 +1,20 @@
 
 function x = proyecto(imgname)
 imrgb=imread(imgname);
-imresized=imresize(imrgb, [150,150]);
-imgray=rgb2gray(imresized);
+
+imgray=rgb2gray(imrgb);
+
+imfilt2 = medfilt2(imgray,[3 3]);
+imresized=imresize(imfilt2, [150,150]);
 %figure, imshow(imrgb);
 %figure, imshow(imresized);
-b=Binarizacion(imgray,200);
+b=Binarizacion(imresized,200);
 %figure, imshow(b);
-
-segmented = segmentar(b);
+cropped = imcrop(b, [2 2 147 147]);
+segmented = segmentar(cropped);
 
 %imedge=edge(segmented, 'canny');
 %figure, imshow(imedge);
-%figure, imshow(segmented);
+figure, imshow(segmented);
 x = HuMom(segmented);
 end

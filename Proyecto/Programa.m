@@ -22,7 +22,7 @@ function varargout = Programa(varargin)
 
 % Edit the above text to modify the response to help Programa
 
-% Last Modified by GUIDE v2.5 21-Nov-2014 01:24:12
+% Last Modified by GUIDE v2.5 02-Dec-2014 15:49:50
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -105,6 +105,8 @@ load('net.mat');
 load('p.mat');
 sol=sim(net, p(num,:)');
 total=round(sol);
+total2 = char(total+64);
+set(handles.edit2, 'string', total2);
 disp(total)
 
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -118,3 +120,26 @@ main;
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+
+function edit2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit2 as text
+%        str2double(get(hObject,'String')) returns contents of edit2 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end

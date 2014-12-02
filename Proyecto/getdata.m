@@ -1,6 +1,6 @@
-files = dir('Proyecto/letrastest/*.jpg');
-files2 = dir('Proyecto/letrasJulian/*.bmp');
-files3 = dir('Proyecto/letras/*.bmp');
+files = dir('si/proyecto final si/redneuronal/proyecto/letrasc/*.jpg');
+files2 = dir('si/proyecto final si/redneuronal/proyecto/letrasj/*.bmp');
+files3 = dir('si/proyecto final si/redneuronal/proyecto/letras/*.bmp');
 Y = [];
 counter = 1;
 counterfin = 0;
