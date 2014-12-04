@@ -22,7 +22,7 @@ function varargout = Programa(varargin)
 
 % Edit the above text to modify the response to help Programa
 
-% Last Modified by GUIDE v2.5 02-Dec-2014 15:49:50
+% Last Modified by GUIDE v2.5 03-Dec-2014 21:30:34
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -42,7 +42,8 @@ else
     gui_mainfcn(gui_State, varargin{:});
 end
 % End initialization code - DO NOT EDIT
-
+%GLOBALS
+global image_selected;
 
 % --- Executes just before Programa is made visible.
 function Programa_OpeningFcn(hObject, eventdata, handles, varargin)
@@ -104,6 +105,8 @@ num= str2num(str);
 load('net.mat');
 load('p.mat');
 sol=sim(net, p(num,:)');
+disp(sol);
+disp(p(num,:));
 total=round(sol);
 total2 = char(total+64);
 set(handles.edit2, 'string', total2);
@@ -143,3 +146,31 @@ function edit2_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in examinar.
+function examinar_Callback(hObject, eventdata, handles)
+global image_selected;
+[image_selected, pathname] = uigetfile({'*.bmp;*.jpg','Archivos de Imagen (*.bmp,*.jpg)';'*.*','Todos los archivos (*.*)'},'Seleccione la imagen');
+imshow(image_selected, 'parent', handles.axes1);
+disp(image_selected);
+% hObject    handle to examinar (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in transcribe.
+function transcribe_Callback(hObject, eventdata, handles)
+global image_selected;
+disp(image_selected);
+load('net.mat');
+hus = proyecto(image_selected);
+disp(hus);
+sol=sim(net,hus');
+disp(sol);
+total = round(sol);
+set(handles.text2, 'string', char(total + 64));
+disp(total);
+% hObject    handle to transcribe (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
