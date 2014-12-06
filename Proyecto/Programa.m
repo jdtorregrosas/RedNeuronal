@@ -151,7 +151,7 @@ end
 % --- Executes on button press in examinar.
 function examinar_Callback(hObject, eventdata, handles)
 global image_selected;
-[image_selected, pathname] = uigetfile({'*.bmp;*.jpg','Archivos de Imagen (*.bmp,*.jpg)';'*.*','Todos los archivos (*.*)'},'Seleccione la imagen');
+[image_selected, pathname] = uigetfile({'*.bmp;*.jpg;*.png','Archivos de Imagen (*.bmp,*.jpg,*.png)';'*.*','Todos los archivos (*.*)'},'Seleccione la imagen');
 imshow(image_selected, 'parent', handles.axes1);
 disp(image_selected);
 % hObject    handle to examinar (see GCBO)

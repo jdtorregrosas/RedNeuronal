@@ -14,7 +14,7 @@ disp(b);
 segmented = segmentar(b);
 segmented = imresize(segmented, [10 10]);
 segmented = uint8(segmented);
-%figure, imshow(segmented);
+figure, imshow(segmented);
 segmented(segmented ~= 0) = 1;
 disp(segmented);
 
@@ -22,7 +22,7 @@ disp(segmented);
 %imedge = uint8(imedge);
 %imedge(imedge == 1) = 255;
 %a = HuMom(imedge);
-x = reshape(segmented, [1,100]);
-disp(x');
-x = double(x);
+b = reshape(segmented, [1,100]);
+disp(b'); 
+x = b;
 end
