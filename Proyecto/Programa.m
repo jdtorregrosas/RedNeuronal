@@ -107,10 +107,12 @@ load('p.mat');
 sol=sim(net, p(num,:)');
 disp(sol);
 disp(p(num,:));
-total=round(sol);
-total2 = char(total+64);
-set(handles.edit2, 'string', total2);
+total=mod(round(sol),26);
 disp(total)
+total2 = char(total+64);
+disp(total2)
+set(handles.edit2, 'string', total2);
+
 
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -168,7 +170,8 @@ hus = proyecto(image_selected);
 disp(hus);
 sol=sim(net,hus');
 disp(sol);
-total = round(sol);
+total=mod(round(sol),26);
+disp(total)
 set(handles.text2, 'string', char(total + 64));
 disp(total);
 % hObject    handle to transcribe (see GCBO)

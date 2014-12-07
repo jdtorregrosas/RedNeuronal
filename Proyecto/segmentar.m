@@ -8,3 +8,4 @@ function j = segmentar(imagen)
         % Display the image with informative caption.
         %imshow(j);
     end
+    
