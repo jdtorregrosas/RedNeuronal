@@ -107,7 +107,7 @@ load('p.mat');
 sol=sim(net, p(num,:)');
 disp(sol);
 disp(p(num,:));
-total=mod(round(sol),27);
+total=mod(round(sol),26);
 %disp(total)
 total2 = char(total+64);
 %disp(total2)
@@ -170,7 +170,7 @@ hus = proyecto(image_selected);
 disp(hus);
 sol=sim(net,hus');
 disp(sol);
-total=mod(round(sol),27);
+total=mod(round(sol),26);
 disp(total)
 set(handles.text2, 'string', char(total + 64));
 disp(total);

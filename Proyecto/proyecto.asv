@@ -29,7 +29,7 @@ segmented = uint8(segmented);
         %figure, imshow(segmented);
 %segmented(segmented ~= 0) = 1;
 segmented = imresize(segmented, [7 5]);
-%segmented = imcrop(segmented, [1 1 5 5]);
+segmented = imcrop(segmented, [1 1 5 5]);
         %figure, imshow(segmented);
 segmented = imresize(segmented, [7 5]);
 %disp(segmented);
