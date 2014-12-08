@@ -167,13 +167,13 @@ global image_selected;
 disp(image_selected);
 load('net.mat');
 hus = proyecto(image_selected);
-disp(hus);
+%disp(hus);
 sol=sim(net,hus');
-disp(sol);
+%disp(sol);
 total=mod(round(sol),27);
-disp(total)
+%disp(total)
 set(handles.text2, 'string', char(total + 64));
-disp(total);
+%disp(total);
 % hObject    handle to transcribe (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
