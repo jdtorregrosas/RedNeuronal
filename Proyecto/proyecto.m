@@ -2,19 +2,19 @@
 function x = proyecto(imgname)
 [alto, ancho, dimension] = size(imgname);
 imrgb=imread(imgname);
-
+        figure, imshow(imrgb);
 imgray=rgb2gray(imrgb);
-
+        figure, imshow(imgray);
 if alto==7
     imresized=imgray;  
 else
     imfilt2 = medfilt2(imgray,[3 3]);
-    imresized=imresize(imfilt2, [20,20]);
+    imresized=imresize(imfilt2, [17,15]);
 end
 %figure, imshow(imgray);
 %disp(imresized)
 b=Binarizacion(imresized,250);
-%figure, imshow(b);
+        figure, imshow(b);
 %disp(b);
 %cropped = imcrop(b, [1 1 18 18]);
 %disp(cropped);
@@ -23,15 +23,15 @@ segmented = segmentar(b);
 disp(segmented);
 segmented = uint8(segmented);
 disp(segmented);
-figure, imshow(segmented);
+        figure, imshow(segmented);
 %segmented(segmented ~= 0) = 1;
 segmented = imresize(segmented, [7 5]);
-disp(segmented);
+%disp(segmented);
 segmented=Binarizacion(segmented,100);
-disp(segmented);
+%disp(segmented);
 segmented=Binarizacion(segmented,250);
-figure, imshow(segmented);
-disp(segmented);
+        figure, imshow(segmented);
+%disp(segmented);
 %imedge= edge(segmented, 'canny');
 %imedge = uint8(imedge);
 %imedge(imedge == 1) = 255;
