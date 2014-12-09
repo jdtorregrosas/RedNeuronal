@@ -52,7 +52,8 @@ function Programa_OpeningFcn(hObject, eventdata, handles, varargin)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to Programa (see VARARGIN)
-
+a = imread('fondo.jpg');
+imshow(a, 'parent', handles.axes2);
 % Choose default command line output for Programa
 handles.output = hObject;
 
@@ -103,10 +104,10 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 str = get(handles.edit1, 'string');
 num= str2num(str);
 load('net.mat');
-load('p.mat');
-sol=sim(net, p(num,:)');
+load('x.mat');
+sol=sim(net, x(num,:)');
 disp(sol);
-disp(p(num,:));
+disp(x(num,:));
 total=mod(round(sol),27);
 %disp(total)
 total2 = char(total+64);
@@ -121,7 +122,7 @@ set(handles.edit2, 'string', total2);
 % --- Executes on button press in pushbutton2.
 function pushbutton2_Callback(hObject, eventdata, handles)
 getdata;
-main;
+main2;
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -155,7 +156,6 @@ function examinar_Callback(hObject, eventdata, handles)
 global image_selected;
 [image_selected, pathname] = uigetfile({'*.bmp;*.jpg;*.png','Archivos de Imagen (*.bmp,*.jpg,*.png)';'*.*','Todos los archivos (*.*)'},'Seleccione la imagen');
 imshow(image_selected, 'parent', handles.axes1);
-disp(image_selected);
 % hObject    handle to examinar (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -167,12 +167,15 @@ global image_selected;
 disp(image_selected);
 load('net.mat');
 hus = proyecto(image_selected);
+
 %disp(hus);
-sol=sim(net,hus');
+sol=sim(net,hus')
+sol= find(sol == max(sol))
+
 %disp(sol);
-total=mod(round(sol),27);
+%total=mod(round(sol),27);
 %disp(total)
-set(handles.text2, 'string', char(total + 64));
+set(handles.text2, 'string', char(sol + 64));
 %disp(total);
 % hObject    handle to transcribe (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB

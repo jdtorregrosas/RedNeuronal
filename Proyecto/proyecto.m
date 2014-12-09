@@ -40,7 +40,7 @@ segmented(segmented <= 110) = 0;
 %segmented=Binarizacion(segmented,100);
 %disp(segmented);
 %segmented=Binarizacion(segmented,250);
-        %figure, imshow(segmented);
+figure, imshow(segmented);
 %disp(segmented);
 %imedge= edge(segmented, 'canny');
 %imedge = uint8(imedge);
