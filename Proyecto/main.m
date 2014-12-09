@@ -1,7 +1,7 @@
 datos = load ('data.mat');
-p=Y(1:177,1:35);
-t=Y(1:177,36);
-net=newff(p',t',15,{'tansig','purelin'},'trainscg');
+p=Y(1:1425,1:35);
+t=Y(1:1425,36);
+net=newff(p',t',35,{'tansig','purelin'},'trainscg');
 %net = newff(p',t',20);
 net.divideFcn='';
 net.trainParam.goal=0;
